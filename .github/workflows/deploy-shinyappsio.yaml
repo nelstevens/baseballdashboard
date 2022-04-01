@@ -20,6 +20,15 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: Install system dependencies
+        env:
+          RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
+        run: |
+          Rscript -e "install.packages('renv')"
+          Rscript -e "renv::install('r-hub/sysreqs')"
+          sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
+          sudo -s eval "$sysreqs"
+
       - name: install rsconnect
         run: install.packages('rsconnect')
         shell: Rscript {0}
