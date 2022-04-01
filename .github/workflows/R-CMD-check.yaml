@@ -48,9 +48,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.RENV_PATHS_ROOT }}
-          key: ${{ matrix.config.os}}-renv-${{ hashFiles('**/renv.lock') }}
-          restore-keys: |
-            ${{ matrix.config.os }}-renv-
+          key: ${{ matrix.config.os}}-${{ matrix.config.r }}-renv-${{ hashFiles('**/renv.lock') }}
+          # restore-keys: |
+          #   ${{ matrix.config.os }}-renv-
 
       - name: Install system dependencies
         env:
