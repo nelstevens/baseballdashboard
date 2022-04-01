@@ -1,0 +1,27 @@
+on:
+  tags:
+    - v*
+
+name: deploy-shinyapps-io
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          use-public-rspm: true
+
+      - name: install rsconnect
+        run: install.packages('rsconnect')
+        shell: Rscript {0}
+
+      - name: deploy
+        env:
+          SHINYAPPS_ACCOUNT: ${{ secrets.SHINYAPPS_ACCOUNT }}
+          SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
+          SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
+        run: Rscript deploy/deploy-shinyapps.R
