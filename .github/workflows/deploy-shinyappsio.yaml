@@ -1,7 +1,11 @@
 on:
-  push:
-    tags:
-      - v*
+  workflow_run:
+    workflows: ["R-CMD-check"]
+    types:
+      - completed
+  # push:
+  #   tags:
+  #     - v*
 
 name: deploy-shinyapps-io
 
