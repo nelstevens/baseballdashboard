@@ -20,6 +20,12 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: cache packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.RENV_PATHS_ROOT }}
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+
       - name: Install system dependencies
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
@@ -28,6 +34,13 @@ jobs:
           Rscript -e "renv::install('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
+
+      - name: Restore packages
+        shell: Rscript {0}
+        run: |
+          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+          renv::restore()
+          .libPaths()
 
       - name: install rsconnect
         run: install.packages('rsconnect')
