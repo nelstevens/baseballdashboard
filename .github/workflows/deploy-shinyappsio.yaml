@@ -7,6 +7,7 @@ name: deploy-shinyapps-io
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    needs: R-CMD-check
 
     steps:
       - uses: actions/checkout@v2
