@@ -1,6 +1,6 @@
 Package: lionsdash
 Title: Lions stats dashboard
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: person('Nelson', 'Stevens', email = 'nelson.stevens92@gmail.com', role = c('cre', 'aut'))
 Description: Visualize current zürich lions statistics.
 License: MIT + file LICENSE
