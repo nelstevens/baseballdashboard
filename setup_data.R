@@ -10,3 +10,8 @@ PL21off <- getApi("stats/Stats_Static.asmx/off", list(Year = 2021, League = 83, 
 VR21fld <- getApi("stats/Stats_Static.asmx/fld", list(Year = 2021, League = 83, Round = 53, Splits = "", IndOrTeam = "Individual"))
 # get 2021 PL offense
 PL21fld <- getApi("stats/Stats_Static.asmx/fld", list(Year = 2021, League = 83, Round = 303, Splits = "", IndOrTeam = "Individual"))
+
+# get 2021 VR pitching
+VR21pit <- getApi("stats/Stats_Static.asmx/pit", list(Year = 2021, League = 83, Round = 53, Splits = "", IndOrTeam = "Individual"))
+# get 2021 PL offense
+PL21pit <- getApi("stats/Stats_Static.asmx/pit", list(Year = 2021, League = 83, Round = 303, Splits = "", IndOrTeam = "Individual"))
