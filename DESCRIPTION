@@ -10,11 +10,14 @@ Imports:
     fst,
     golem (>= 0.3.2),
     httr,
+    magrittr,
     pkgload,
+    rlang,
     shiny (>= 1.7.1),
     stringr,
     tibblify,
-    tidyr
+    tidyr,
+    xml2
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2

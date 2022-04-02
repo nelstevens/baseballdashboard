@@ -6,6 +6,9 @@
 #' @importFrom tidyr unnest
 #' @importFrom dplyr filter
 #' @importFrom stringr str_detect
+#' @importFrom magrittr %>%
+#' @importFrom xml2 as_list
+#' @importFrom rlang .data
 #'
 #'
 #' @noRd
@@ -18,7 +21,7 @@ getApi <- function(endpoint, query) {
   )
   httr::stop_for_status(res)
   con <- httr::content(res) %>%
-    xml2::as_list()
+    as_list()
   df <- unnest(tibblify(con[[1]]))
-  df %>% filter(stringr::str_detect(Player,"LIO"))
+  df %>% filter(stringr::str_detect(.data$Player,"LIO"))
 }
