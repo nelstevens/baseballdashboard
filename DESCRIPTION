@@ -7,12 +7,14 @@ License: MIT + file LICENSE
 Imports: 
     config (>= 0.3.1),
     dplyr,
+    fst,
     golem (>= 0.3.2),
     httr,
     pkgload,
     shiny (>= 1.7.1),
     stringr,
-    tibblify
+    tibblify,
+    tidyr
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
