@@ -45,6 +45,10 @@ jobs:
           renv::restore()
           .libPaths()
 
+      - name: write data
+        shell: bash
+        run: R -f ./setup_data.R
+
       - name: install rsconnect
         run: install.packages('rsconnect')
         shell: Rscript {0}
