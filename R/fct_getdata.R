@@ -34,5 +34,5 @@ make_df <- function(res) {
   df2 <- df %>% filter(stringr::str_detect(.data$Player,"LIO"))
   # generate column vector
   cols <- names(df2)[!(names(df2) %in% c("Player", "Nationality", "dtCreated"))]
-  df2 %>% mutate_at(cols, as.numeric) %>% replace(is.na(.data), 0)
+  df2 %>% mutate_at(cols, as.numeric) %>% replace(is.na(.), 0)
 }
