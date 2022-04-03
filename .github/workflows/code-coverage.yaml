@@ -47,7 +47,7 @@ jobs:
         run: R -f ./setup_data.R
 
       - name: Test coverage
-        run: covr::codecov(token = "${{ secrets.CODECOV_TOKEN }}")
+        run: covr::codecov(token = "${{ secrets.CODECOV_TOKEN }}", quiet = FALSE)
         shell: Rscript {0}
 
       - name: Show testthat output
