@@ -2,6 +2,7 @@
 
 export(run_app)
 import(shiny)
+import(shinydashboard)
 importFrom(dplyr,filter)
 importFrom(dplyr,mutate_at)
 importFrom(golem,activate_js)

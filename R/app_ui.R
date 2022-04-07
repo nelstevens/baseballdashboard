@@ -3,12 +3,23 @@
 #' @param request Internal parameter for `{shiny}`.
 #'     DO NOT REMOVE.
 #' @import shiny
+#' @import shinydashboard
 #' @noRd
 app_ui <- function(request) {
   tagList(
     golem_add_external_resources(),
-    fluidPage(
-      h1("lions2022")
+    dashboardPage(
+      skin = "black",
+      dashboardHeader(
+        title = "Zürich Lions"
+      ),
+      dashboardSidebar(
+        sidebarMenu(
+          menuItem("Offense", tabName = "offense", icon = icon("utensils")),
+          menuItem("Defense", tabName = "defense", icon = icon("mitten"))
+        )
+      ),
+      dashboardBody()
     )
   )
 }
