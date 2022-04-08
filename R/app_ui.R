@@ -15,8 +15,8 @@ app_ui <- function(request) {
       ),
       dashboardSidebar(
         sidebarMenu(
-          menuItem("Offense", tabName = "offense", icon = icon("utensils")),
-          menuItem("Defense", tabName = "defense", icon = icon("mitten"))
+          make_league_sidebar("nlb"),
+          make_league_sidebar("flg")
         )
       ),
       dashboardBody()
