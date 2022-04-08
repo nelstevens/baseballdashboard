@@ -11,7 +11,7 @@
 #' @noRd
 make_league_sidebar <- function(id) {
   menuItem(
-    str_to_upper(id),
+    ifelse(id == "flg", "1. Liga", str_to_upper(id)),
     tabName = id,
     icon = icon("baseball-ball"),
     menuSubItem(
