@@ -11,7 +11,7 @@ app_ui <- function(request) {
     dashboardPage(
       skin = "black",
       dashboardHeader(
-        title = "Zürich Lions"
+        title = "Z\u00fcrich Lions"
       ),
       dashboardSidebar(
         sidebarMenu(
