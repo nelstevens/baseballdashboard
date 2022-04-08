@@ -16,6 +16,7 @@ Imports:
     rlang,
     shiny (>= 1.7.1),
     shinydashboard,
+    shinydashboardPlus,
     shinyWidgets,
     stringr,
     tibblify,
