@@ -19,7 +19,14 @@ app_ui <- function(request) {
           make_league_sidebar("flg")
         )
       ),
-      dashboardBody()
+      dashboardBody(
+        tabItems(
+          tabItem(
+            tabName = "offense-nlb",
+            mod_offense_ui("nlboff")
+          )
+        )
+      )
     )
   )
 }

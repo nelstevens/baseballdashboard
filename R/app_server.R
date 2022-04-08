@@ -5,4 +5,5 @@
 #' @import shiny
 #' @noRd
 app_server <- function(input, output, session) {
+  mod_offense_server("nlboff")
 }

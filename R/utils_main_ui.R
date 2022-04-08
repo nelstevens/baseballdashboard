@@ -16,12 +16,12 @@ make_league_sidebar <- function(id) {
     icon = icon("baseball-ball"),
     menuSubItem(
       "Offense",
-      paste0("offense-", id),
+      tabName = paste0("offense-", id),
       icon = icon("utensils")
     ),
     menuSubItem(
       "Defense",
-      paste0("defense-", id),
+      tabName = paste0("defense-", id),
       icon = icon("mitten")
     )
   )

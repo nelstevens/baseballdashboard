@@ -1008,6 +1008,20 @@
         "xtable"
       ]
     },
+    "shinyWidgets": {
+      "Package": "shinyWidgets",
+      "Version": "0.6.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "02fba70d7c5c1ab0754d9c0108c029eb",
+      "Requirements": [
+        "bslib",
+        "htmltools",
+        "jsonlite",
+        "sass",
+        "shiny"
+      ]
+    },
     "shinydashboard": {
       "Package": "shinydashboard",
       "Version": "0.7.2",
