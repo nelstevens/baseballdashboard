@@ -12,7 +12,7 @@ make_barplot <- function(df, inps) {
   pl <- plot_ly()
   df2 <- df %>% arrange(desc(.[[inps[1]]]))
   df2$Player<- factor(df2$Player, levels = df2$Player)
-  for (i in input$statsel) {
+  for (i in inps) {
     pl <- pl %>%
       add_trace(
         x = df2$Player,
