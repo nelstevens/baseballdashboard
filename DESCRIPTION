@@ -12,6 +12,7 @@ Imports:
     httr,
     magrittr,
     pkgload,
+    plotly,
     rlang,
     shiny (>= 1.7.1),
     shinydashboard,

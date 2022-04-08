@@ -6,10 +6,12 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList uiOutput
+#' @importFrom plotly plotlyOutput
 mod_offense_ui <- function(id){
   ns <- NS(id)
   tagList(
-    uiOutput(ns("statselUI"))
+    uiOutput(ns("statselUI")),
+    plotlyOutput(ns("barplt"))
   )
 }
 
@@ -17,6 +19,8 @@ mod_offense_ui <- function(id){
 #'
 #' @importFrom fst read_fst
 #' @import shiny
+#' @import plotly
+#' @importFrom dplyr arrange desc
 #' @importFrom shinyWidgets pickerInput
 #'
 #' @noRd
@@ -31,12 +35,36 @@ mod_offense_server <- function(id){
         inputId = ns("statsel"),
         label = "Statistiken: ",
         choices = choic,
+        multiple = TRUE,
         options = list(
           `live-search` = TRUE
         )
 
       )
     )
+
+    plt <- reactive({
+      shiny::req(input$statsel)
+      pl <- plot_ly()
+      df2 <- df %>% arrange(desc(.[[input$statsel[1]]]))
+      df2$Player<- factor(df2$Player, levels = df2$Player)
+      for (i in input$statsel) {
+        pl <- pl %>%
+          add_trace(
+            x = df2$Player,
+            y = df2[[i]],
+            type = "bar",
+            name = i
+          )
+      }
+      pl
+    })
+
+
+    output$barplt <- renderPlotly(plt())
+
+
+
   })
 }
 
