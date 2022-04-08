@@ -68,6 +68,10 @@ jobs:
           renv::restore()
           .libPaths()
 
+      - name: write data
+        shell: bash
+        run: R -f ./setup_data.R
+
       - uses: r-lib/actions/check-r-package@v1
 
       - name: Show testthat output
