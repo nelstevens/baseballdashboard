@@ -51,8 +51,20 @@ mod_tabitem_server <- function(id, df){
       )
     )
 
+    sts <- reactiveVal()
+
+    observeEvent(input$statsel, {
+      req(input$statsel)
+      if (length(input$statsel) > length(sts())) {
+        sts(c(sts(), setdiff(input$statsel, sts())))
+      } else {
+        remo <- setdiff(sts(), input$statsel)
+        sts(sts()[!(sts() %in% remo)])
+      }
+    })
+
     plt <- reactive({
-      make_barplot(df, input$statsel)
+      make_barplot(df, sts())
     })
 
 
