@@ -7,6 +7,7 @@
 #' @importFrom shinydashboardPlus accordion accordionItem
 #' @importFrom shiny NS tagList uiOutput
 #' @importFrom plotly plotlyOutput
+#' @importFrom DT DTOutput
 mod_tabitem_ui <- function(id){
   ns <- NS(id)
   tagList(
@@ -20,8 +21,8 @@ mod_tabitem_ui <- function(id){
         plotlyOutput(ns("barplt"))
       ),
       accordionItem(
-        title = "Beitrag zum Total",
-        tags$h1("hallo")
+        title = "Daten",
+        DTOutput(ns("dats"))
       )
     )
   )
@@ -31,6 +32,7 @@ mod_tabitem_ui <- function(id){
 #'
 #' @importFrom fst read_fst
 #' @import shiny
+#' @import DT
 #' @importFrom shinyWidgets pickerInput
 #'
 #' @noRd
@@ -75,6 +77,8 @@ mod_tabitem_server <- function(id, df, title = NULL){
 
 
     output$barplt <- renderPlotly(plt())
+
+    output$dats <- renderDT(DT::datatable(df, options = list(scrollX = TRUE)))
 
 
 
