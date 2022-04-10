@@ -10,6 +10,7 @@
 mod_tabitem_ui <- function(id){
   ns <- NS(id)
   tagList(
+    uiOutput(ns("titlUI")),
     accordion(
       id = ns("accordion"),
       accordionItem(
@@ -33,10 +34,15 @@ mod_tabitem_ui <- function(id){
 #' @importFrom shinyWidgets pickerInput
 #'
 #' @noRd
-mod_tabitem_server <- function(id, df){
+mod_tabitem_server <- function(id, df, title = NULL){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
     choic <- names(df)[-c(1:9)]
+
+    output$titlUI <- renderUI({
+      if (is.null(title)) h1(style = "text-align: center;", "blank title")
+      else h1(style = "text-align: center;", title)
+    })
 
     output$statselUI <- renderUI(
       pickerInput(
