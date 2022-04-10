@@ -9,10 +9,11 @@
 #' @return The return value, if any, from executing the utility.
 #'
 #' @noRd
-make_league_sidebar <- function(id) {
+make_league_sidebar <- function(id, expanded = FALSE) {
   menuItem(
     ifelse(id == "flg", "1. Liga", str_to_upper(id)),
     tabName = id,
+    startExpanded = expanded,
     icon = icon("baseball-ball"),
     menuSubItem(
       "Offense",

@@ -15,7 +15,7 @@ app_ui <- function(request) {
       ),
       dashboardSidebar(
         sidebarMenu(
-          make_league_sidebar("nlb"),
+          make_league_sidebar("nlb", expanded = TRUE),
           make_league_sidebar("flg")
         )
       ),
