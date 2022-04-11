@@ -8,7 +8,7 @@
 #' @importFrom shiny NS tagList uiOutput
 #' @importFrom plotly plotlyOutput
 #' @importFrom DT DTOutput
-mod_tabitem_ui <- function(id){
+mod_tabitem_ui <- function(id, type = "offense"){
   ns <- NS(id)
   tagList(
     uiOutput(ns("titlUI")),
@@ -19,6 +19,14 @@ mod_tabitem_ui <- function(id){
         collapsed = FALSE,
         uiOutput(ns("statselUI")),
         plotlyOutput(ns("barplt"))
+      ),
+      accordionItem(
+        title = "Beitrag zum Total",
+        shinyWidgets::pickerInput(
+          ns("relsel"),
+          choices = get_relpicker(type)
+        ),
+        plotlyOutput(ns("relplt"))
       ),
       accordionItem(
         title = "Daten",
@@ -79,6 +87,12 @@ mod_tabitem_server <- function(id, df, title = NULL){
     output$barplt <- renderPlotly(plt())
 
     output$dats <- renderDT(DT::datatable(df, options = list(scrollX = TRUE)))
+
+    relplt <- reactive({
+      make_relplot(df, input$relsel)
+    })
+
+    output$relplt <- renderPlotly(relplt())
 
 
 

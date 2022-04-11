@@ -27,3 +27,22 @@ make_league_sidebar <- function(id, expanded = FALSE) {
     )
   )
 }
+
+#' make pickerinput for relative contribution
+#'
+#' @noRd
+get_relpicker <- function(type) {
+  if (type == "offense") {
+    c(
+      "R",
+      "H",
+      "RBI",
+      "Sngls",
+      "Dbls",
+      "Trpls",
+      "HR",
+      "HBP",
+      "SO"
+    )
+  }
+}

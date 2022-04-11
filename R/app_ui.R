@@ -23,7 +23,7 @@ app_ui <- function(request) {
         tabItems(
           tabItem(
             tabName = "offense-nlb",
-            mod_tabitem_ui("nlboff")
+            mod_tabitem_ui("nlboff", "offense")
           ),
           tabItem(
             tabName = "defense-nlb",
