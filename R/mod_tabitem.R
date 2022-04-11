@@ -40,7 +40,7 @@ mod_tabitem_ui <- function(id, type = "offense"){
 #'
 #' @importFrom fst read_fst
 #' @import shiny
-#' @import DT
+#' @importFrom DT renderDT datatable
 #' @importFrom shinyWidgets pickerInput
 #'
 #' @noRd
