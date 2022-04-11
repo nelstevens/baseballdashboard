@@ -25,7 +25,7 @@ make_barplot <- function(df, inps) {
 }
 
 #' make plot for relative contributions
-#' @importFrom dplyr select mutate arrange desc top_n layout
+#' @importFrom dplyr select mutate arrange desc top_n
 #' @import plotly
 #'
 #' @noRd
