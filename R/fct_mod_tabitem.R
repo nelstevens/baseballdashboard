@@ -47,3 +47,65 @@ make_relplot <- function(df, inps) {
   ) %>% layout(showlegend = FALSE)
   plt
 }
+
+#' make sankey plot
+#'
+#' @import plotly
+#'
+#' @noRd
+make_sankey <- function(df, inps) {
+  argu <- make_sankey_inps(df, inps)
+
+  plt <- plot_ly(
+    type = "sankey",
+    orientation = "v",
+    node = list(
+      label = argu$labels,
+      color = argu$colors,
+      pad = 15,
+      thickness = 20,
+      line = list(color = "black", width = 0.5)
+    ),
+    link = list(
+      source = argu$sources,
+      target = argu$targets,
+      value = argu$values
+    )
+  )
+  plt
+}
+
+#' make inputs for sankey plotly
+#'
+#' @importFrom dplyr filter select mutate_at all_of
+#' @noRd
+make_sankey_inps <- function(df, inps) {
+  Player <- . <- NULL
+  intr <- c("PA", "Sngls", "Dbls", "Trpls", "HR", "BB", "HBP", "SO")
+  vals <- df %>%
+    filter(Player == inps) %>%
+    select(Player, all_of(intr)) %>%
+    dplyr::mutate_at(intr, function(x) x/.$PA)
+  labs <- c(
+    "plate appearance",
+    "Single",
+    "Double",
+    "triple",
+    "Homerun",
+    "Base on balls",
+    "Hit by pitch",
+    "Strikeout"
+  )
+  cols <- c("blue", rep("green", 4), rep("orange", 2), "red")
+  src <- rep(0, 87)
+  targ <- 1:7
+  values <- as.numeric(vals[1, 3:9])
+  list(
+    labels = labs,
+    colors = cols,
+    sources = src,
+    targets = targ,
+    values = values
+  )
+}
+

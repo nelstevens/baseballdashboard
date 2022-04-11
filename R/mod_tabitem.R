@@ -29,6 +29,11 @@ mod_tabitem_ui <- function(id, type = "offense"){
         plotlyOutput(ns("relplt"))
       ),
       accordionItem(
+        title = "Ergebnis Wahrscheinlichkeiten",
+        uiOutput(ns("sankeyUI")),
+        plotlyOutput(ns("sankeyplt"))
+      ),
+      accordionItem(
         title = "Daten",
         DTOutput(ns("dats"))
       )
@@ -93,6 +98,21 @@ mod_tabitem_server <- function(id, df, title = NULL){
     })
 
     output$relplt <- renderPlotly(relplt())
+
+    output$sankeyUI <- renderUI(
+      pickerInput(
+        inputId = ns("sankey"),
+        label = "Spieler:",
+        choices = unique(df$Player)
+      )
+    )
+
+    sankey <- reactive({
+      req(input$sankey)
+      make_sankey(df, input$sankey)
+    })
+
+    output$sankeyplt <- renderPlotly(sankey())
 
 
 
