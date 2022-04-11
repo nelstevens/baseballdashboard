@@ -9,6 +9,7 @@
 #' @noRd
 make_barplot <- function(df, inps) {
   shiny::req(inps)
+  . <- NULL
   pl <- plot_ly()
   df2 <- df %>% arrange(desc(.[[inps[1]]]))
   df2$Player<- factor(df2$Player, levels = df2$Player)
@@ -30,6 +31,7 @@ make_barplot <- function(df, inps) {
 #'
 #' @noRd
 make_relplot <- function(df, inps) {
+  . <- Player <- NULL
   df2 <- df %>%
     select(Player, inps) %>%
     arrange(desc(.[[inps]])) %>%

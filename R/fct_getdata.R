@@ -28,6 +28,7 @@ getApi <- function(endpoint, query) {
 #' @importFrom tibblify tibblify
 #' @noRd
 make_df <- function(res) {
+  . <- NULL
   con <- httr::content(res) %>%
     as_list()
   df <- unnest(tibblify(con[[1]]))
