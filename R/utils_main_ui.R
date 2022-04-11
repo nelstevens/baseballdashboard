@@ -44,5 +44,12 @@ get_relpicker <- function(type) {
       "HBP",
       "SO"
     )
+  } else if (type == "defense") {
+    c(
+      "Assists",
+      "Putouts",
+      "Errors",
+      "DP"
+    )
   }
 }
