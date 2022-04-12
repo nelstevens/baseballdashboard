@@ -100,6 +100,7 @@ make_sankey_inps <- function(df, inps) {
   src <- rep(0, 87)
   targ <- 1:7
   values <- as.numeric(vals[1, 3:9])
+  labs <- c(labs[1], paste0(labs[2:8], " - ", round(values*100), "%"))
   list(
     labels = labs,
     colors = cols,
