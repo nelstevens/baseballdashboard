@@ -10,35 +10,62 @@
 #' @importFrom DT DTOutput
 mod_tabitem_ui <- function(id, type = "offense"){
   ns <- NS(id)
-  tagList(
-    uiOutput(ns("titlUI")),
-    accordion(
-      id = ns("accordion"),
-      accordionItem(
-        title = "Spieler vergleichen",
-        collapsed = FALSE,
-        uiOutput(ns("statselUI")),
-        plotlyOutput(ns("barplt"))
-      ),
-      accordionItem(
-        title = "Beitrag zum Total",
-        shinyWidgets::pickerInput(
-          ns("relsel"),
-          choices = get_relpicker(type)
+  if (type == "offense") {
+    tagList(
+      uiOutput(ns("titlUI")),
+      accordion(
+        id = ns("accordion"),
+        accordionItem(
+          title = "Spieler vergleichen",
+          collapsed = FALSE,
+          uiOutput(ns("statselUI")),
+          plotlyOutput(ns("barplt"))
         ),
-        plotlyOutput(ns("relplt"))
-      ),
-      accordionItem(
-        title = "Ergebnis Wahrscheinlichkeiten",
-        uiOutput(ns("sankeyUI")),
-        plotlyOutput(ns("sankeyplt"))
-      ),
-      accordionItem(
-        title = "Daten",
-        DTOutput(ns("dats"))
+        accordionItem(
+          title = "Beitrag zum Total",
+          shinyWidgets::pickerInput(
+            ns("relsel"),
+            choices = get_relpicker(type)
+          ),
+          plotlyOutput(ns("relplt"))
+        ),
+        accordionItem(
+          title = "Ergebnis Wahrscheinlichkeiten",
+          uiOutput(ns("sankeyUI")),
+          plotlyOutput(ns("sankeyplt"))
+        ),
+        accordionItem(
+          title = "Daten",
+          DTOutput(ns("dats"))
+        )
       )
     )
-  )
+  } else {
+    tagList(
+      uiOutput(ns("titlUI")),
+      accordion(
+        id = ns("accordion"),
+        accordionItem(
+          title = "Spieler vergleichen",
+          collapsed = FALSE,
+          uiOutput(ns("statselUI")),
+          plotlyOutput(ns("barplt"))
+        ),
+        accordionItem(
+          title = "Beitrag zum Total",
+          shinyWidgets::pickerInput(
+            ns("relsel"),
+            choices = get_relpicker(type)
+          ),
+          plotlyOutput(ns("relplt"))
+        ),
+        accordionItem(
+          title = "Daten",
+          DTOutput(ns("dats"))
+        )
+      )
+    )
+  }
 }
 
 #' offense Server Functions
@@ -49,7 +76,7 @@ mod_tabitem_ui <- function(id, type = "offense"){
 #' @importFrom shinyWidgets pickerInput
 #'
 #' @noRd
-mod_tabitem_server <- function(id, df, title = NULL){
+mod_tabitem_server <- function(id, df, title = NULL, type = "offense"){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
     choic <- names(df)[-c(1:9)]
@@ -98,23 +125,22 @@ mod_tabitem_server <- function(id, df, title = NULL){
     })
 
     output$relplt <- renderPlotly(relplt())
-
-    output$sankeyUI <- renderUI(
-      pickerInput(
-        inputId = ns("sankey"),
-        label = "Spieler:",
-        choices = unique(df$Player)
+    if (type == "offense") {
+      output$sankeyUI <- renderUI(
+        pickerInput(
+          inputId = ns("sankey"),
+          label = "Spieler:",
+          choices = unique(df$Player)
+        )
       )
-    )
 
-    sankey <- reactive({
-      req(input$sankey)
-      make_sankey(df, input$sankey)
-    })
+      sankey <- reactive({
+        req(input$sankey)
+        make_sankey(df, input$sankey)
+      })
 
-    output$sankeyplt <- renderPlotly(sankey())
-
-
+      output$sankeyplt <- renderPlotly(sankey())
+    }
 
   })
 }
