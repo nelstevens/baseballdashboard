@@ -24,3 +24,4 @@ purrr::walk(
   lst,
   function(x) fst::write_fst(base::get(x), paste0(app_sys("app/extdata"), "/", x, ".fst"))
 )
+
