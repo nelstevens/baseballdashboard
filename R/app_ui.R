@@ -28,6 +28,10 @@ app_ui <- function(request) {
           tabItem(
             tabName = "defense-nlb",
             mod_tabitem_ui("nlbdef", "defense")
+          ),
+          tabItem(
+            tabName = "pitching-nlb",
+            mod_tabitem_ui("nlbpit", "pitching")
           )
         )
       )

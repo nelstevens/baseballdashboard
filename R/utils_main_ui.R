@@ -24,6 +24,11 @@ make_league_sidebar <- function(id, expanded = FALSE) {
       "Defense",
       tabName = paste0("defense-", id),
       icon = icon("mitten")
+    ),
+    menuSubItem(
+      "Pitching",
+      tabName = paste0("pitching-", id),
+      icon = icon("baseball-ball")
     )
   )
 }
@@ -50,6 +55,17 @@ get_relpicker <- function(type) {
       "Putouts",
       "Errors",
       "DP"
+    )
+  } else {
+    c(
+      "IP",
+      "H",
+      "R",
+      "ER",
+      "HR",
+      "BB",
+      "K",
+      "HBP"
     )
   }
 }
