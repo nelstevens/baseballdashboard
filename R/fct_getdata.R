@@ -13,7 +13,7 @@ getApi <- function(endpoint, query) {
     query = query
   )
   httr::stop_for_status(res)
-  make_df(res)
+  make_df(res, query$League)
 }
 
 #' response to df
@@ -27,12 +27,16 @@ getApi <- function(endpoint, query) {
 #' @importFrom tidyr unnest
 #' @importFrom tibblify tibblify
 #' @noRd
-make_df <- function(res) {
+make_df <- function(res, league) {
   . <- NULL
   con <- httr::content(res) %>%
     as_list()
   df <- unnest(tibblify(con[[1]]))
-  df2 <- df %>% filter(stringr::str_detect(.data$Player,"LIO"))
+  if (league == 83) {
+    df2 <- df %>% filter(stringr::str_detect(.data$Player,"LIO"))
+  } else {
+    df2 <- df %>% filter(stringr::str_detect(.data$Player,"WP4"))
+  }
   # generate column vector
   cols <- names(df2)[!(names(df2) %in% c("Player", "Nationality", "dtCreated"))]
   df2 %>% mutate_at(cols, as.numeric) %>% replace(is.na(.), 0)
