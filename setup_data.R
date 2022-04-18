@@ -19,17 +19,17 @@ PL21nlbpit <- getApi("stats/Stats_Static.asmx/pit", list(Year = 2021, League = 8
 # get 2021 VR offense 1l
 VR21fstoff <- getApi("stats/Stats_Static.asmx/off", list(Year = 2021, League = 84, Round = 57, Splits = "", IndOrTeam = "Individual"))
 # get 2021 PL offense 1l
-PL21fstoff <- getApi("stats/Stats_Static.asmx/off", list(Year = 2021, League = 84, Round = 410, Splits = "", IndOrTeam = "Individual"))
+#PL21fstoff <- getApi("stats/Stats_Static.asmx/off", list(Year = 2021, League = 84, Round = 410, Splits = "", IndOrTeam = "Individual"))
 
 # get 2021 VR def 1l
 VR21fstfld <- getApi("stats/Stats_Static.asmx/fld", list(Year = 2021, League = 84, Round = 57, Splits = "", IndOrTeam = "Individual"))
 # get 2021 PL offense 1l
-PL21fstfld <- getApi("stats/Stats_Static.asmx/fld", list(Year = 2021, League = 84, Round = 410, Splits = "", IndOrTeam = "Individual"))
+#PL21fstfld <- getApi("stats/Stats_Static.asmx/fld", list(Year = 2021, League = 84, Round = 410, Splits = "", IndOrTeam = "Individual"))
 
 # get 2021 VR pitching 1l
 VR21fstpit <- getApi("stats/Stats_Static.asmx/pit", list(Year = 2021, League = 84, Round = 57, Splits = "", IndOrTeam = "Individual"))
 # get 2021 PL offense 1l
-PL21fstpit <- getApi("stats/Stats_Static.asmx/pit", list(Year = 2021, League = 84, Round = 410, Splits = "", IndOrTeam = "Individual"))
+#PL21fstpit <- getApi("stats/Stats_Static.asmx/pit", list(Year = 2021, League = 84, Round = 410, Splits = "", IndOrTeam = "Individual"))
 
 # get list of object
 lst <- ls()
