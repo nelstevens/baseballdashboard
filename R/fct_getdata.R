@@ -42,7 +42,7 @@ make_df <- function(res, league) {
   } else {
     df2 <- df %>% filter(stringr::str_detect(.data$Player,"WP4"))
   }
-  if (nrow(df2) == 0) stop(sprintf("Dataframes is empty after subsetting", league))
+  if (nrow(df2) == 0) stop(paste0("Dataframes is empty after subsetting", league))
   # generate column vector
   cols <- names(df2)[!(names(df2) %in% c("Player", "Nationality", "dtCreated"))]
   df2 %>% mutate_at(cols, as.numeric) %>% replace(is.na(.), 0)
