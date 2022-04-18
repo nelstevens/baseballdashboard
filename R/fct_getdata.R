@@ -6,6 +6,7 @@
 #'
 #' @noRd
 getApi <- function(endpoint, query) {
+  Sys.sleep(10)
   baseurl <- "https://easyscore.com"
   res <- httr::GET(
     url = baseurl,
@@ -13,7 +14,8 @@ getApi <- function(endpoint, query) {
     query = query
   )
   httr::stop_for_status(res)
-  make_df(res, query$League)
+  df <- make_df(res, query$League)
+  return(df)
 }
 
 #' response to df
@@ -37,6 +39,7 @@ make_df <- function(res, league) {
   } else {
     df2 <- df %>% filter(stringr::str_detect(.data$Player,"WP4"))
   }
+  if (nrow(df2) == 0) stop("Dataframes is empty after subsetting")
   # generate column vector
   cols <- names(df2)[!(names(df2) %in% c("Player", "Nationality", "dtCreated"))]
   df2 %>% mutate_at(cols, as.numeric) %>% replace(is.na(.), 0)

@@ -11,4 +11,12 @@ app_server <- function(input, output, session) {
   mod_tabitem_server("nlbdef", df = df_nlbdef, "NLB Defense")
   df_nlbpit <- read_fst(app_sys("app/extdata/VR21nlbpit.fst"))
   mod_tabitem_server("nlbpit", df = df_nlbpit, "NLB Pitching")
+
+
+  df_fstoff <- read_fst(app_sys("app/extdata/VR21fstoff.fst"))
+  mod_tabitem_server("flgoff", df = df_fstoff, "1. Liga  Offense")
+  df_fstdef <- read_fst(app_sys("app/extdata/VR21fstfld.fst"))
+  mod_tabitem_server("flgdef", df = df_fstdef, "1. Liga Defense")
+  df_fstpit <- read_fst(app_sys("app/extdata/VR21fstpit.fst"))
+  mod_tabitem_server("flgpit", df = df_fstpit, "1. Liga Pitching")
 }

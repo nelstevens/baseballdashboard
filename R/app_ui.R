@@ -32,6 +32,18 @@ app_ui <- function(request) {
           tabItem(
             tabName = "pitching-nlb",
             mod_tabitem_ui("nlbpit", "pitching")
+          ),
+          tabItem(
+            tabName = "offense-flg",
+            mod_tabitem_ui("flgoff", "offense")
+          ),
+          tabItem(
+            tabName = "defense-flg",
+            mod_tabitem_ui("flgdef", "defense")
+          ),
+          tabItem(
+            tabName = "pitching-flg",
+            mod_tabitem_ui("flgpit", "pitching")
           )
         )
       )
