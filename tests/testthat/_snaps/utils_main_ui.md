@@ -22,6 +22,12 @@
               Defense
             </a>
           </li>
+          <li>
+            <a href="#shiny-tab-pitching-test" data-toggle="tab" data-value="pitching-test">
+              <i class="fa fa-baseball-ball" role="presentation" aria-label="baseball-ball icon"></i>
+              Pitching
+            </a>
+          </li>
         </ul>
       </li>
 
@@ -47,6 +53,12 @@
             <a href="#shiny-tab-defense-test" data-toggle="tab" data-value="defense-test">
               <i class="fa fa-mitten" role="presentation" aria-label="mitten icon"></i>
               Defense
+            </a>
+          </li>
+          <li>
+            <a href="#shiny-tab-pitching-test" data-toggle="tab" data-value="pitching-test">
+              <i class="fa fa-baseball-ball" role="presentation" aria-label="baseball-ball icon"></i>
+              Pitching
             </a>
           </li>
         </ul>
