@@ -7,12 +7,14 @@
 #' @noRd
 getApi <- function(endpoint, query) {
   Sys.sleep(10)
+  message(paste0("resquesting: ", endpoint))
   baseurl <- "https://easyscore.com"
   res <- httr::GET(
     url = baseurl,
     path = endpoint,
     query = query
   )
+  cat(str(query))
   httr::stop_for_status(res)
   df <- make_df(res, query$League)
   return(df)
@@ -30,6 +32,7 @@ getApi <- function(endpoint, query) {
 #' @importFrom tibblify tibblify
 #' @noRd
 make_df <- function(res, league) {
+  message(paste0("processing", league))
   . <- NULL
   con <- httr::content(res) %>%
     as_list()
