@@ -6,7 +6,6 @@
 #'
 #' @noRd
 getApi <- function(endpoint, query) {
-  Sys.sleep(10)
   message(paste0("resquesting: ", endpoint))
   baseurl <- "https://easyscore.com"
   res <- httr::GET(

@@ -1,6 +1,7 @@
 # laod all
 devtools::load_all()
-
+getApi <- purrr::insistently(getApi)
+getApi <- purrr::slowly(getApi)
 # get 2021 VR offense nlb
 VR21nlboff <- getApi("stats/Stats_Static.asmx/off", list(Year = 2021, League = 83, Round = 53, Splits = "", IndOrTeam = "Individual"))
 # get 2021 PL offense nlb
@@ -32,7 +33,7 @@ VR21fstpit <- getApi("stats/Stats_Static.asmx/pit", list(Year = 2021, League = 8
 #PL21fstpit <- getApi("stats/Stats_Static.asmx/pit", list(Year = 2021, League = 84, Round = 410, Splits = "", IndOrTeam = "Individual"))
 
 # get list of object
-lst <- ls()
+lst <- ls()[ls() != "getApi"]
 
 # write to fst
 purrr::walk(
