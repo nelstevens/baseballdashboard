@@ -39,8 +39,10 @@ make_df <- function(res, league) {
   df <- unnest(tibblify(con[[1]]))
   cat(str(df))
   if (league == 83) {
+    cat("subset for NLB")
     df2 <- df %>% filter(stringr::str_detect(.data$Player,"LIO"))
   } else {
+    cat("subset for 1. Liga")
     df2 <- df %>% filter(stringr::str_detect(.data$Player,"WP4"))
   }
   cat(str(df2))
