@@ -1,15 +1,6 @@
-#' make UI for playercards
-#'
-#' @description A fct function
-#' @importFrom shiny icon
-#'
-#' @return The return value, if any, from executing the function.
+#' make stats list for player cars
 #'
 #' @noRd
-make_player_UI <- function() {
-
-}
-
 make_statlist_player <- function(type) {
   if (type == "offense") {
     sts <- c(
@@ -32,6 +23,47 @@ make_statlist_player <- function(type) {
       `On base plus slugging` = "OPS",
       `Stolen bases` = "SB",
       `Caught stealing` = "CS"
+    )
+  } else if (type == "defense") {
+    sts <- c(
+      Nationality = "Nationality",
+      Games = "Games",
+      Chances = "Chances",
+      Putouts = "Putouts",
+      Assists = "Assists",
+      Errors = "Errors",
+      `Double plays` = "DP",
+      `Fielding percentage` = "FPct"
+    )
+  } else {
+    sts <- c(
+      Nationality = "Nationality",
+      Games = "G",
+      `Games started` = "GS",
+      `Games finished` = "GF",
+      `Innings pitched` = "IP",
+      `Earned run average` = "ERA",
+      Hits = "H",
+      Runs = "R",
+      `Earned runs` = "ER",
+      `Home runs` = "HR",
+      Walks = "BB",
+      Strikeouts = "K",
+      `Hit by pitches` = "HBP",
+      `Wild pitches` = "WP",
+      Balks = "BK",
+      Wins = "W",
+      Losses = "L",
+      `Win lose percentage` = "WLPct",
+      Saves = "SV",
+      `Blown saves` = "BS",
+      Outs = "Outs",
+      `Batters faced` = "BF",
+      `Opponent batting average` = "OAVG",
+      `Opponent on base percentage` = "OOBP",
+      `Opponent slugging percentage` = "OSLG",
+      `Opponent on base plus slugging` = "OOPS",
+      `Batters faces per inning` = "BFIP"
     )
   }
   return(sts)
