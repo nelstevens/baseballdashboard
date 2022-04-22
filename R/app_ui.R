@@ -20,30 +20,32 @@ app_ui <- function(request) {
         )
       ),
       dashboardBody(
-        tabItems(
-          tabItem(
-            tabName = "offense-nlb",
-            mod_tabitem_ui("nlboff", "offense")
-          ),
-          tabItem(
-            tabName = "defense-nlb",
-            mod_tabitem_ui("nlbdef", "defense")
-          ),
-          tabItem(
-            tabName = "pitching-nlb",
-            mod_tabitem_ui("nlbpit", "pitching")
-          ),
-          tabItem(
-            tabName = "offense-flg",
-            mod_tabitem_ui("flgoff", "offense")
-          ),
-          tabItem(
-            tabName = "defense-flg",
-            mod_tabitem_ui("flgdef", "defense")
-          ),
-          tabItem(
-            tabName = "pitching-flg",
-            mod_tabitem_ui("flgpit", "pitching")
+        fluidRow(
+          tabItems(
+            tabItem(
+              tabName = "offense-nlb",
+              mod_tabitem_ui("nlboff", "offense")
+            ),
+            tabItem(
+              tabName = "defense-nlb",
+              mod_tabitem_ui("nlbdef", "defense")
+            ),
+            tabItem(
+              tabName = "pitching-nlb",
+              mod_tabitem_ui("nlbpit", "pitching")
+            ),
+            tabItem(
+              tabName = "offense-flg",
+              mod_tabitem_ui("flgoff", "offense")
+            ),
+            tabItem(
+              tabName = "defense-flg",
+              mod_tabitem_ui("flgdef", "defense")
+            ),
+            tabItem(
+              tabName = "pitching-flg",
+              mod_tabitem_ui("flgpit", "pitching")
+            )
           )
         )
       )
