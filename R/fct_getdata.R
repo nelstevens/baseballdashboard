@@ -13,7 +13,6 @@ getApi <- function(endpoint, query) {
     path = endpoint,
     query = query
   )
-  cat(str(query))
   httr::stop_for_status(res)
   df <- make_df(res, query$League)
   return(df)
@@ -60,7 +59,6 @@ make_df_post <- function(res, league) {
     cat("subset for 1. Liga")
     df2 <- df %>% filter(stringr::str_detect(.data$Player,"WP4"))
   }
-  cat(str(df2))
   if (nrow(df2) == 0) stop(paste0("Dataframes is empty after subsetting", league))
   # generate column vector
   cols <- names(df2)[!(names(df2) %in% c("Player", "Nationality", "dtCreated"))]
@@ -84,7 +82,6 @@ make_df <- function(res, league) {
   con <- httr::content(res) %>%
     as_list()
   df <- unnest(tibblify(con[[1]]))
-  cat(str(df))
   if (league == 83) {
     cat("subset for NLB")
     df2 <- df %>% filter(stringr::str_detect(.data$Player,"LIO"))
@@ -92,7 +89,6 @@ make_df <- function(res, league) {
     cat("subset for 1. Liga")
     df2 <- df %>% filter(stringr::str_detect(.data$Player,"WP4"))
   }
-  cat(str(df2))
   if (nrow(df2) == 0) stop(paste0("Dataframes is empty after subsetting", league))
   # generate column vector
   cols <- names(df2)[!(names(df2) %in% c("Player", "Nationality", "dtCreated"))]
