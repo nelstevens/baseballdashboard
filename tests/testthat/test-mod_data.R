@@ -1,7 +1,7 @@
 testServer(
   mod_data_server,
   # Add here your module params
-  args = list()
+  args = list(df = fst::read_fst(app_sys("app/extdata/VR21nlboff.fst")))
   , {
     ns <- session$ns
     expect_true(
@@ -25,7 +25,7 @@ testServer(
     # - Testing output
     # expect_true(inherits(output$tbl$html, "html"))
 })
- 
+
 test_that("module ui works", {
   ui <- mod_data_ui(id = "test")
   golem::expect_shinytaglist(ui)
@@ -35,4 +35,4 @@ test_that("module ui works", {
     expect_true(i %in% names(fmls))
   }
 })
- 
+
