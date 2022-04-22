@@ -21,6 +21,10 @@ mod_tabitem_ui <- function(id, type = "offense"){
           mod_compare_ui(ns("comp"))
         ),
         accordionItem(
+          title = "Spielerprofile",
+          mod_player_ui(ns("play"))
+        ),
+        accordionItem(
           title = "Beitrag zum Total",
           mod_contribution_ui(ns("cont"), type)
         ),
@@ -43,6 +47,10 @@ mod_tabitem_ui <- function(id, type = "offense"){
           title = "Spieler vergleichen",
           collapsed = FALSE,
           mod_compare_ui(ns("comp"))
+        ),
+        accordionItem(
+          title = "Spielerprofile",
+          mod_player_ui(ns("play"))
         ),
         accordionItem(
           title = "Beitrag zum Total",
@@ -75,6 +83,11 @@ mod_tabitem_server <- function(id, df, title = NULL, type = "offense"){
     mod_compare_server(
       "comp",
       df = df
+    )
+    mod_player_server(
+      "play",
+      df,
+      type
     )
     mod_contribution_server(
       "cont",
