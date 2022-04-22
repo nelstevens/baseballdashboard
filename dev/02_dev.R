@@ -3,9 +3,14 @@
 #
 attachment::att_amend_desc()
 golem::add_module(name = "offense", with_test = TRUE)
-golem::add_module(name = "name_of_module2", with_test = TRUE)
+golem::add_module("compare", with_test = TRUE)
+golem::add_module("contribution", with_test = TRUE)
+golem::add_module("outcome", with_test = TRUE)
+golem::add_module("data", with_test = TRUE)
 golem::add_fct("getdata", with_test = TRUE)
 golem::add_fct("mod_tabitem", with_test = TRUE)
+
+
 golem::add_utils("main_ui", with_test = TRUE)
 #golem::add_js_file("script")
 #golem::add_js_handler("handlers")

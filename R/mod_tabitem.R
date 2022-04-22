@@ -18,25 +18,19 @@ mod_tabitem_ui <- function(id, type = "offense"){
         accordionItem(
           title = "Spieler vergleichen",
           collapsed = FALSE,
-          uiOutput(ns("statselUI")),
-          plotlyOutput(ns("barplt"))
+          mod_compare_ui(ns("comp"))
         ),
         accordionItem(
           title = "Beitrag zum Total",
-          shinyWidgets::pickerInput(
-            ns("relsel"),
-            choices = get_relpicker(type)
-          ),
-          plotlyOutput(ns("relplt"))
+          mod_contribution_ui(ns("cont"), type)
         ),
         accordionItem(
           title = "Ergebnis Wahrscheinlichkeiten",
-          uiOutput(ns("sankeyUI")),
-          plotlyOutput(ns("sankeyplt"))
+          mod_outcome_ui(ns("outc"))
         ),
         accordionItem(
           title = "Daten",
-          DTOutput(ns("dats"))
+          mod_data_ui(ns("data"))
         )
       )
     )
@@ -48,20 +42,15 @@ mod_tabitem_ui <- function(id, type = "offense"){
         accordionItem(
           title = "Spieler vergleichen",
           collapsed = FALSE,
-          uiOutput(ns("statselUI")),
-          plotlyOutput(ns("barplt"))
+          mod_compare_ui(ns("comp"))
         ),
         accordionItem(
           title = "Beitrag zum Total",
-          shinyWidgets::pickerInput(
-            ns("relsel"),
-            choices = get_relpicker(type)
-          ),
-          plotlyOutput(ns("relplt"))
+          mod_contribution_ui(ns("cont"), type)
         ),
         accordionItem(
           title = "Daten",
-          DTOutput(ns("dats"))
+          mod_data_ui(ns("data"))
         )
       )
     )
@@ -72,75 +61,37 @@ mod_tabitem_ui <- function(id, type = "offense"){
 #'
 #' @importFrom fst read_fst
 #' @import shiny
-#' @importFrom DT renderDT datatable
-#' @importFrom shinyWidgets pickerInput
 #'
 #' @noRd
 mod_tabitem_server <- function(id, df, title = NULL, type = "offense"){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
-    choic <- names(df)[-c(1:9)]
 
     output$titlUI <- renderUI({
       if (is.null(title)) h1(style = "text-align: center;", "blank title")
       else h1(style = "text-align: center;", title)
     })
 
-    output$statselUI <- renderUI(
-      pickerInput(
-        inputId = ns("statsel"),
-        label = "Statistiken: ",
-        choices = choic,
-        multiple = TRUE,
-        options = list(
-          `live-search` = TRUE
-        )
-
-      )
+    mod_compare_server(
+      "comp",
+      df = df
+    )
+    mod_contribution_server(
+      "cont",
+      df = df
     )
 
-    sts <- reactiveVal()
 
-    observeEvent(input$statsel, {
-      req(input$statsel)
-      if (length(input$statsel) > length(sts())) {
-        sts(c(sts(), setdiff(input$statsel, sts())))
-      } else {
-        remo <- setdiff(sts(), input$statsel)
-        sts(sts()[!(sts() %in% remo)])
-      }
-    })
-
-    plt <- reactive({
-      make_barplot(df, sts())
-    })
-
-
-    output$barplt <- renderPlotly(plt())
-
-    output$dats <- renderDT(DT::datatable(df, options = list(scrollX = TRUE)))
-
-    relplt <- reactive({
-      make_relplot(df, input$relsel)
-    })
-
-    output$relplt <- renderPlotly(relplt())
     if (type == "offense") {
-      output$sankeyUI <- renderUI(
-        pickerInput(
-          inputId = ns("sankey"),
-          label = "Spieler:",
-          choices = unique(df$Player)
-        )
-      )
-
-      sankey <- reactive({
-        req(input$sankey)
-        make_sankey(df, input$sankey)
-      })
-
-      output$sankeyplt <- renderPlotly(sankey())
+     mod_outcome_server(
+       "outc",
+       df
+     )
     }
+    mod_data_server(
+      "data",
+      df
+    )
 
   })
 }
