@@ -38,6 +38,34 @@ mod_tabitem_ui <- function(id, type = "offense"){
         )
       )
     )
+  } else if (type == "defense") {
+    tagList(
+      uiOutput(ns("titlUI")),
+      accordion(
+        id = ns("accordion"),
+        accordionItem(
+          title = "Spieler vergleichen",
+          collapsed = FALSE,
+          mod_compare_ui(ns("comp"))
+        ),
+        accordionItem(
+          title = "Spielerprofile",
+          mod_player_ui(ns("play"))
+        ),
+        accordionItem(
+          title = "Beitrag zum Total",
+          mod_contribution_ui(ns("cont"), type)
+        ),
+        accordionItem(
+          title = "Fielding percentage nach Position",
+          mod_fldprct_ui(ns("fdpct"))
+        ),
+        accordionItem(
+          title = "Daten",
+          mod_data_ui(ns("data"))
+        )
+      )
+    )
   } else {
     tagList(
       uiOutput(ns("titlUI")),
@@ -93,7 +121,12 @@ mod_tabitem_server <- function(id, df, title = NULL, type = "offense"){
       "cont",
       df = df
     )
-
+    if (type == "defense") {
+      mod_fldprct_server(
+        "fdpct",
+        df
+      )
+    }
 
     if (type == "offense") {
      mod_outcome_server(

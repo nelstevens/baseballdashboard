@@ -8,9 +8,11 @@ golem::add_module("contribution", with_test = TRUE)
 golem::add_module("outcome", with_test = TRUE)
 golem::add_module("player", with_test = TRUE)
 golem::add_module("data", with_test = TRUE)
+golem::add_module("fldprct", with_test = TRUE)
 golem::add_fct("getdata", with_test = TRUE)
 golem::add_fct("mod_tabitem", with_test = TRUE)
 golem::add_fct("mod_player", with_test = TRUE)
+golem::add_fct("mod_fldprct", with_test = TRUE)
 
 
 golem::add_utils("main_ui", with_test = TRUE)
