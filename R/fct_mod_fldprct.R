@@ -8,8 +8,8 @@
 make_fdpctinfo <- function(df, player) {
   plr <- df[df$Player == player, c("FPctP", "FPctC", "FPct1B", "FPct2B", "FPct3B", "FPctSS", "FPctOF")]
   info <- list(
-    x = c(0, 0, 63, 20, -63, -20, 0),
-    y = c(63, 0, 83, 126, 83, 126, 190),
+    x = c(0, 0, 63, 35, -63, -35, 0),
+    y = c(63, 0, 88, 126, 88, 126, 190),
     txt = as.numeric(plr)
   )
   return(info)
@@ -32,6 +32,6 @@ make_fdpct <- function(info) {
       color = "red"
     ) +
     theme(
-      plot.margin = unit(c(1,1,1,1), "cm")
+      plot.margin = unit(c(0,0,0,0), "cm")
     )
 }
