@@ -1302,6 +1302,18 @@
         "xml2"
       ]
     },
+    "sportyR": {
+      "Package": "sportyR",
+      "Version": "1.0.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "e5e233ab0bdae85d12fb7fc9c53f59ff",
+      "Requirements": [
+        "dplyr",
+        "ggplot2",
+        "glue"
+      ]
+    },
     "stringi": {
       "Package": "stringi",
       "Version": "1.7.6",
