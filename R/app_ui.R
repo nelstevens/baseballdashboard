@@ -4,6 +4,7 @@
 #'     DO NOT REMOVE.
 #' @import shiny
 #' @import shinydashboard
+#' @importFrom shinyWidgets pickerInput
 #' @noRd
 app_ui <- function(request) {
   tagList(
@@ -15,6 +16,19 @@ app_ui <- function(request) {
       ),
       dashboardSidebar(
         sidebarMenu(
+          div(
+            id = "sidesel",
+            pickerInput(
+              "lgepic",
+              "Liga wählen:",
+              choices = c("NLB", "1. Liga")
+            ),
+            pickerInput(
+              "yrpic",
+              "Jahr wählen:",
+              choices = 2022:2016
+            )
+          ),
           make_league_sidebar("nlb", expanded = TRUE),
           make_league_sidebar("flg")
         )
