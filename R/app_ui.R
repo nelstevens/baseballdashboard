@@ -26,7 +26,14 @@ app_ui <- function(request) {
             pickerInput(
               "yrpic",
               "Jahr wählen:",
-              choices = 2022:2016
+              choices = NULL,
+              selected = NULL
+            ),
+            pickerInput(
+              "rndpic",
+              "Runde wählen:",
+              choices = NULL,
+              selected = NULL
             )
           ),
           make_league_sidebar("nlb", expanded = TRUE),

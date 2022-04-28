@@ -35,7 +35,7 @@ postApi <- function(endpoint, query) {
     encode = "json"
   )
   httr::stop_for_status(res)
-  make_df_post(res, query$League)
+  make_df_post(res, query$League, query$Year)
 }
 
 #' make df for post
@@ -46,7 +46,7 @@ postApi <- function(endpoint, query) {
 #' @importFrom rlang .data
 #' @importFrom magrittr %>%
 #' @noRd
-make_df_post <- function(res, league) {
+make_df_post <- function(res, league, year) {
   . <- NULL
   message(paste0("processing", league))
   con <- httr::content(res)
@@ -57,7 +57,8 @@ make_df_post <- function(res, league) {
     df2 <- df %>% filter(stringr::str_detect(.data$Player,"LIO"))
   } else {
     cat("subset for 1. Liga")
-    df2 <- df %>% filter(stringr::str_detect(.data$Player,"WP4"))
+    if (year == 2021) df2 <- df %>% filter(stringr::str_detect(.data$Player,"WP4"))
+    else df2 <- df %>% filter(stringr::str_detect(.data$Player,"LIO"))
   }
   if (nrow(df2) == 0) stop(paste0("Dataframes is empty after subsetting", league))
   # generate column vector

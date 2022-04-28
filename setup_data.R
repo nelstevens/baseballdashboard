@@ -32,7 +32,18 @@ for (i in yrs) {
   }
 
 }
-
+avlssub <- purrr::map(
+  purrr::set_names(yrs),
+  function(x) {
+    list(
+      rounds = c()
+    )
+  }
+)
+avls <- list(
+  nlb = avlssub,
+  fst = avlssub
+)
 purrr::walk(
   cls,
   function(x) {
@@ -48,7 +59,26 @@ purrr::walk(
       },
       error = function(m) message(m)
     )
-    if (!is.null(df)) fst::write_fst(df, path)
+    if (!is.null(df)) {
+      if (x$endpoint == "stats/Stats_Static.asmx/off")
+      avls[[lge]][[as.character(yr+2000)]]$rounds <<- c(avls[[lge]][[as.character(yr+2000)]]$rounds, rnd)
+      fst::write_fst(df, path)
+    }
   }
 )
+rounds <- avls
+
+a <- purrr::map(
+  avls,
+  function(x) {
+    purrr::map(
+      x,
+      function(y) {
+        if (!is.null(y$rounds)) return(y)
+      }
+    )
+  }
+)
+years <- a %>% purrr::map(., purrr::discard, .p = rlang::is_null)
+usethis::use_data(rounds, years, internal = TRUE)
 
