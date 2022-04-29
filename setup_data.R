@@ -80,5 +80,5 @@ a <- purrr::map(
   }
 )
 years <- a %>% purrr::map(., purrr::discard, .p = rlang::is_null)
-usethis::use_data(rounds, years, internal = TRUE)
+usethis::use_data(rounds, years, internal = TRUE, overwrite = TRUE)
 
