@@ -53,19 +53,7 @@ app_ui <- function(request) {
             tabItem(
               tabName = "pitching-cat",
               mod_tabitem_ui("catpit", "pitching")
-            )#,
-            # tabItem(
-            #   tabName = "offense-flg",
-            #   mod_tabitem_ui("flgoff", "offense")
-            # ),
-            # tabItem(
-            #   tabName = "defense-flg",
-            #   mod_tabitem_ui("flgdef", "defense")
-            # ),
-            # tabItem(
-            #   tabName = "pitching-flg",
-            #   mod_tabitem_ui("flgpit", "pitching")
-            # )
+            )
           )
         )
       )
