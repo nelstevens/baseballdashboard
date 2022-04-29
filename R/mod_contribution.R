@@ -29,7 +29,7 @@ mod_contribution_server <- function(id, df){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
     relplt <- reactive({
-      make_relplot(df, input$relsel)
+      make_relplot(df(), input$relsel)
     })
 
     output$relplt <- renderPlotly(relplt())

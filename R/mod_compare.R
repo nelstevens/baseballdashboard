@@ -26,13 +26,12 @@ mod_compare_ui <- function(id){
 mod_compare_server <- function(id, df){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
-    choic <- names(df)[-c(1:9)]
-
+    choic <- reactive(names(df())[-c(1:9)])
     output$statselUI <- renderUI(
       pickerInput(
         inputId = ns("statsel"),
         label = "Statistiken: ",
-        choices = choic,
+        choices = choic(),
         multiple = TRUE,
         options = list(
           `live-search` = TRUE
@@ -54,7 +53,7 @@ mod_compare_server <- function(id, df){
     })
 
     plt <- reactive({
-      make_barplot(df, sts())
+      make_barplot(df(), sts())
     })
 
 

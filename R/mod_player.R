@@ -27,11 +27,11 @@ mod_player_server <- function(id, df, type){
     output$selplayUI <- renderUI({
       pickerInput(
         ns("selplayer"),
-        choices = unique(df$Player)
+        choices = unique(df()$Player)
       )
     })
     output$playerUI <- renderUI({
-      make_playercards(df, type, input$selplayer)
+      make_playercards(df(), type, input$selplayer)
     })
   })
 }

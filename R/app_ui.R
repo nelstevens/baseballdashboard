@@ -36,37 +36,36 @@ app_ui <- function(request) {
               selected = NULL
             )
           ),
-          make_league_sidebar("nlb", expanded = TRUE),
-          make_league_sidebar("flg")
+          make_league_sidebar("cat", expanded = TRUE)
         )
       ),
       dashboardBody(
         fluidRow(
           tabItems(
             tabItem(
-              tabName = "offense-nlb",
-              mod_tabitem_ui("nlboff", "offense")
+              tabName = "offense-cat",
+              mod_tabitem_ui("catoff", "offense")
             ),
             tabItem(
-              tabName = "defense-nlb",
-              mod_tabitem_ui("nlbdef", "defense")
+              tabName = "defense-cat",
+              mod_tabitem_ui("catdef", "defense")
             ),
             tabItem(
-              tabName = "pitching-nlb",
-              mod_tabitem_ui("nlbpit", "pitching")
-            ),
-            tabItem(
-              tabName = "offense-flg",
-              mod_tabitem_ui("flgoff", "offense")
-            ),
-            tabItem(
-              tabName = "defense-flg",
-              mod_tabitem_ui("flgdef", "defense")
-            ),
-            tabItem(
-              tabName = "pitching-flg",
-              mod_tabitem_ui("flgpit", "pitching")
-            )
+              tabName = "pitching-cat",
+              mod_tabitem_ui("catpit", "pitching")
+            )#,
+            # tabItem(
+            #   tabName = "offense-flg",
+            #   mod_tabitem_ui("flgoff", "offense")
+            # ),
+            # tabItem(
+            #   tabName = "defense-flg",
+            #   mod_tabitem_ui("flgdef", "defense")
+            # ),
+            # tabItem(
+            #   tabName = "pitching-flg",
+            #   mod_tabitem_ui("flgpit", "pitching")
+            # )
           )
         )
       )

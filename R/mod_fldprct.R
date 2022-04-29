@@ -26,12 +26,12 @@ mod_fldprct_server <- function(id, df){
     output$fpctpickerUI <- renderUI({
       pickerInput(
         ns("fpctpicker"),
-        choices = unique(df$Player)
+        choices = unique(df()$Player)
       )
     })
 
     plt <- reactive({
-      info <- make_fdpctinfo(df, input$fpctpicker)
+      info <- make_fdpctinfo(df(), input$fpctpicker)
       make_fdpct(info)
     })
 

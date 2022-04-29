@@ -22,7 +22,7 @@ mod_data_ui <- function(id){
 mod_data_server <- function(id, df){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
-    output$dats <- renderDT(DT::datatable(df, options = list(scrollX = TRUE)))
+    output$dats <- renderDT(DT::datatable(df(), options = list(scrollX = TRUE)))
   })
 }
 

@@ -27,13 +27,13 @@ mod_outcome_server <- function(id, df){
       pickerInput(
         inputId = ns("sankey"),
         label = "Spieler:",
-        choices = unique(df$Player)
+        choices = unique(df()$Player)
       )
     )
 
     sankey <- reactive({
       req(input$sankey)
-      make_sankey(df, input$sankey)
+      make_sankey(df(), input$sankey)
     })
 
     output$sankeyplt <- renderPlotly(sankey())
