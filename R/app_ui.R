@@ -20,18 +20,18 @@ app_ui <- function(request) {
             id = "sidesel",
             pickerInput(
               "lgepic",
-              "Liga wählen:",
+              "Liga w\u00e4hlen:",
               choices = c("NLB", "1. Liga")
             ),
             pickerInput(
               "yrpic",
-              "Jahr wählen:",
+              "Jahr w\u00e4hlen:",
               choices = NULL,
               selected = NULL
             ),
             pickerInput(
               "rndpic",
-              "Runde wählen:",
+              "Runde w\u00e4hlen:",
               choices = NULL,
               selected = NULL
             )
