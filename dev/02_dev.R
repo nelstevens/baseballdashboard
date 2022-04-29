@@ -13,6 +13,7 @@ golem::add_fct("getdata", with_test = TRUE)
 golem::add_fct("mod_tabitem", with_test = TRUE)
 golem::add_fct("mod_player", with_test = TRUE)
 golem::add_fct("mod_fldprct", with_test = TRUE)
+golem::add_css_file("custom")
 
 
 golem::add_utils("main_ui", with_test = TRUE)
