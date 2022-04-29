@@ -1,7 +1,7 @@
 #' make_df
 #'
 #' @noRd
-make_df <- function(vals, type) {
+make_df_tabitem <- function(vals, type) {
   if (type == "offense") {
     cato <- "off"
   } else if (type == "defense") {
@@ -10,7 +10,7 @@ make_df <- function(vals, type) {
     cato <- "pit"
   }
   yr <- as.numeric(vals$yr) - 2000
-  lge <- ifelse(vals$lge == "NLB", tolower(vals$lge), "fst")
+  lge <- vals$lge
   nam <- paste0(vals$rnd, yr, lge, cato, ".fst")
   read_fst(app_sys(paste0("app/extdata/", nam)))
 }

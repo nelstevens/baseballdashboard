@@ -7,7 +7,7 @@
 #' @noRd
 app_server <- function(input, output, session) {
   observeEvent(input$lgepic, {
-    nam <- ifelse(input$lgepic == "NLB", "nlb", "fst")
+    nam <- input$lgepic
     updatePickerInput(
       session = session,
       inputId = "yrpic",
@@ -21,7 +21,7 @@ app_server <- function(input, output, session) {
     )
   })
   observeEvent(input$yrpic, {
-    nam <- ifelse(input$lgepic == "NLB", "nlb", "fst")
+    nam <- input$lgepic
     choic <- rounds[[nam]][[as.character(input$yrpic)]]$rounds
     updatePickerInput(
       session = session,

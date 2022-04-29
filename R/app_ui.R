@@ -21,7 +21,7 @@ app_ui <- function(request) {
             pickerInput(
               "lgepic",
               "Liga w\u00e4hlen:",
-              choices = c("NLB", "1. Liga")
+              choices = c(NLB = "nlb", `1. Liga` = "fst")
             ),
             pickerInput(
               "yrpic",

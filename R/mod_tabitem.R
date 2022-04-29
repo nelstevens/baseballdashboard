@@ -109,7 +109,7 @@ mod_tabitem_server <- function(id, title = NULL, type = "offense", vals){
     })
     df <- eventReactive(reactiveValuesToList(vals), {
       req(vals$rnd, vals$yr, vals$lge)
-      make_df(vals, type)
+      make_df_tabitem(vals, type)
     })
     mod_compare_server(
       "comp",
