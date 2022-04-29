@@ -11,7 +11,13 @@ app_server <- function(input, output, session) {
     updatePickerInput(
       session = session,
       inputId = "yrpic",
-      choices = rev(names(years[[nam]]))
+      choices = rev(names(years[[nam]])),
+      selected = character(0)
+    )
+    updatePickerInput(
+      session = session,
+      inputId = "rndpic",
+      selected = character(0)
     )
   })
   observeEvent(input$yrpic, {
@@ -21,12 +27,12 @@ app_server <- function(input, output, session) {
       session = session,
       inputId = "rndpic",
       choices = choic,
-      selected = choic[1]
+      selected = character(0)
     )
   })
   vals <- reactiveValues()
   observe({
-    vals$yr = input$yrpic
+    vals$yr <-  input$yrpic
     vals$rnd <- input$rndpic
     vals$lge <- input$lgepic
   })
