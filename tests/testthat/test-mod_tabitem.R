@@ -1,7 +1,7 @@
 testServer(
   mod_tabitem_server,
   # Add here your module params
-  args = list(df = fst::read_fst(app_sys("app/extdata/VR21nlboff.fst")), title = "NLB Offense")
+  args = list(title = "NLB Offense", vals = shiny::reactiveValues(yr = 2021, rnd = "VR", lge = "NLB"))
   , {
     ns <- session$ns
     expect_true(

@@ -6,10 +6,10 @@
       <li class="treeview">
         <a href="#shiny-tab-test">
           <i class="fa fa-baseball-ball" role="presentation" aria-label="baseball-ball icon"></i>
-          <span>TEST</span>
+          <span>Kategorie</span>
           <i class="fa fa-angle-left pull-right" role="presentation" aria-label="angle-left icon"></i>
         </a>
-        <ul class="treeview-menu" style="display: none;" data-expanded="TEST">
+        <ul class="treeview-menu" style="display: none;" data-expanded="Kategorie">
           <li>
             <a href="#shiny-tab-offense-test" data-toggle="tab" data-value="offense-test">
               <i class="fa fa-utensils" role="presentation" aria-label="utensils icon"></i>
@@ -39,10 +39,10 @@
       <li class="treeview">
         <a href="#shiny-tab-test">
           <i class="fa fa-baseball-ball" role="presentation" aria-label="baseball-ball icon"></i>
-          <span>TEST</span>
+          <span>Kategorie</span>
           <i class="fa fa-angle-left pull-right" role="presentation" aria-label="angle-left icon"></i>
         </a>
-        <ul class="treeview-menu menu-open" style="display: block;" data-expanded="TEST">
+        <ul class="treeview-menu menu-open" style="display: block;" data-expanded="Kategorie">
           <li>
             <a href="#shiny-tab-offense-test" data-toggle="tab" data-value="offense-test">
               <i class="fa fa-utensils" role="presentation" aria-label="utensils icon"></i>
