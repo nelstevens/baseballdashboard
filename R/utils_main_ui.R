@@ -70,23 +70,3 @@ get_relpicker <- function(type) {
     )
   }
 }
-
-#' make league body
-#'
-#' @noRd
-# make_league_body <- function(league) {
-#   shiny::tagList(
-#     tabItem(
-#       tabName = paste0("offense-", league),
-#       mod_tabitem_ui(paste0(league, "off"), "offense")
-#     ),
-#     tabItem(
-#       tabName = paste0("defense-", league),
-#       mod_tabitem_ui(paste0(league, "def"), "defense")
-#     ),
-#     tabItem(
-#       tabName = paste0("pitching-", league),
-#       mod_tabitem_ui(paste0(league, "pit"), "pitching")
-#     )
-#   )
-# }

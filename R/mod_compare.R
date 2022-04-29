@@ -33,6 +33,7 @@ mod_compare_server <- function(id, df){
         label = "Statistiken: ",
         choices = choic(),
         multiple = TRUE,
+        selected = choic()[1],
         options = list(
           `live-search` = TRUE
         )
