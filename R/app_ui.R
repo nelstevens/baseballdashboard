@@ -41,18 +41,21 @@ app_ui <- function(request) {
       ),
       dashboardBody(
         fluidRow(
-          tabItems(
-            tabItem(
-              tabName = "offense-cat",
-              mod_tabitem_ui("catoff", "offense")
-            ),
-            tabItem(
-              tabName = "defense-cat",
-              mod_tabitem_ui("catdef", "defense")
-            ),
-            tabItem(
-              tabName = "pitching-cat",
-              mod_tabitem_ui("catpit", "pitching")
+          conditionalPanel(
+            condition = "input.rndpic !== null",
+            tabItems(
+              tabItem(
+                tabName = "offense-cat",
+                mod_tabitem_ui("catoff", "offense")
+              ),
+              tabItem(
+                tabName = "defense-cat",
+                mod_tabitem_ui("catdef", "defense")
+              ),
+              tabItem(
+                tabName = "pitching-cat",
+                mod_tabitem_ui("catpit", "pitching")
+              )
             )
           )
         )
