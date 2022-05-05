@@ -4,8 +4,10 @@
 #'     DO NOT REMOVE.
 #' @import shiny
 #' @importFrom shinyWidgets updatePickerInput
+#' @importFrom shinyjs addClass
 #' @noRd
 app_server <- function(input, output, session) {
+  addClass(selector = "body.skin-black", class = "sidebar-open")
   observeEvent(input$lgepic, {
     nam <- input$lgepic
     updatePickerInput(

@@ -20,6 +20,7 @@ Imports:
     shiny (>= 1.7.1),
     shinydashboard,
     shinydashboardPlus,
+    shinyjs,
     shinyWidgets,
     sportyR,
     stringr,

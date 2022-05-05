@@ -5,10 +5,12 @@
 #' @import shiny
 #' @import shinydashboard
 #' @importFrom shinyWidgets pickerInput
+#' @importFrom shinyjs useShinyjs
 #' @noRd
 app_ui <- function(request) {
   tagList(
     golem_add_external_resources(),
+    useShinyjs(),
     dashboardPage(
       skin = "black",
       dashboardHeader(
