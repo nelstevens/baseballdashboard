@@ -59,6 +59,14 @@ app_ui <- function(request) {
                 mod_tabitem_ui("catpit", "pitching")
               )
             )
+          ),
+          conditionalPanel(
+            condition = "input.rndpic === null",
+            div(
+              id = "svg_container",
+              style = "height: 100vh;",
+              includeHTML(path = app_sys("app/www/mainlogo.svg"))
+            )
           )
         )
       )
