@@ -22,5 +22,5 @@ make_barplot <- function(df, inps) {
         name = i
       )
   }
-  pl
+  pl %>% layout(hovermode = "x unified")
 }
