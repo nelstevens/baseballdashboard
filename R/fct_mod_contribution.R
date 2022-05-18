@@ -18,7 +18,7 @@ make_relplot <- function(df, inps) {
     values = df2[[inps]],
     text =  ~Player,
     type = "pie",
-    hovertemplate = paste0("%{text}: <br>%{value}", inps, "</br>")
+    hovertemplate = paste0("%{text}: <br>%{value} ", inps, "</br>")
   ) %>%
     layout(
       showlegend = FALSE
