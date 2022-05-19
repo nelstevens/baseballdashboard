@@ -19,7 +19,8 @@ make_sankey <- function(df, inps) {
     link = list(
       source = argu$sources,
       target = argu$targets,
-      value = argu$values
+      value = argu$values,
+      hovertemplate = "%{value:%}"
     )
   )
   plt
