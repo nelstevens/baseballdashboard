@@ -4,7 +4,7 @@ postApi <- purrr::insistently(postApi)
 postApi <- purrr::slowly(postApi)
 
 ends <- c("stats/Stats_Static.asmx/off", "stats/Stats_Static.asmx/fld", "stats/Stats_Static.asmx/pit")
-yrs <- 2016:2022
+yrs <- 2016:2023
 cls <- list()
 for (i in yrs) {
   for (j in ends) {
