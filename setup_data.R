@@ -11,21 +11,21 @@ for (i in yrs) {
     sub1 <- list(
       list(
         endpoint = j,
-        args = list(Year = i, League = 83, Round = 53, Splits = "", IndOrTeam = "Individual")
+        args = list(Year = i, League = 83, Round = 53, Splits = "", IndOrTeam = "Individual", PlayerID = 0)
       )
     )
     cls <- c(cls, sub1)
     sub2 <- list(
       list(
         endpoint = j,
-        args = list(Year = i, League = 83, Round = 303, Splits = "", IndOrTeam = "Individual")
+        args = list(Year = i, League = 83, Round = 303, Splits = "", IndOrTeam = "Individual", PlayerID = 0)
       )
     )
     cls <- c(cls, sub2)
     sub3 <- list(
       list(
         endpoint = j,
-        args = list(Year = i, League = 84, Round = 57, Splits = "", IndOrTeam = "Individual")
+        args = list(Year = i, League = 84, Round = 57, Splits = "", IndOrTeam = "Individual", PlayerID = 0)
       )
     )
     cls <- c(cls, sub3)
